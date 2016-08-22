@@ -39,7 +39,7 @@ def generate_css_image_properties():
         css_string = css_string + " top: " + str(top) + "px;"
     if random_number > 5 == 0:
         bottom = random.randint(0, 3000)
-        css_string = css_string + " top: " + str(bottom) + "px;"
+        css_string = css_string + " bottom: " + str(bottom) + "px;"
     return css_string + "'"
 
 
