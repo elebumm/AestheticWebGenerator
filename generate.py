@@ -42,3 +42,11 @@ def generate_css_image_properties():
         css_string = css_string + " bottom: " + str(bottom) + "px;"
     return css_string + "'"
 
+def generate_complete_image_tag(static_asset, css_string):
+    html_string = static_asset
+    css =  css_string
+
+    # insert generated css into image tag
+    html_string = html_string[:5] + css + html_string[4:]
+
+    return html_string
