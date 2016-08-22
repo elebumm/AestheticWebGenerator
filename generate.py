@@ -28,19 +28,17 @@ def generate_css_image_properties():
     random_z_index = random.randint(0,5)
     random_number = random.randint(0,7)
     css_string = "style='z-index: " + str(random_z_index) + ";"
-    if random_number > 3:
+    if random_number > 1 and random_number < 5:
         left = random.randint(0, 3000)
         css_string = css_string + " left: " + str(left) + "px;"
-    if random_number > 4:
+    if random_number >= 3:
         right = random.randint(0,4000)
         css_string = css_string + " right: " + str(right) + "px;"
-    if random_number % 2 == 0:
+    if random_number <= 2:
         top = random.randint(0,4000)
         css_string = css_string + " top: " + str(top) + "px;"
-    if random_number > 5 == 0:
+    if random_number % 2 == 0:
         bottom = random.randint(0, 3000)
         css_string = css_string + " bottom: " + str(bottom) + "px;"
     return css_string + "'"
-
-
 
