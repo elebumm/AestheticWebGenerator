@@ -48,11 +48,10 @@ def generate_css_image_properties():
 # and generate_css_image_properties()
 def generate_complete_image_tag(static_asset, css_string):
     html_string = static_asset
-    css =  css_string
+    css = css_string
 
     # insert generated css into image tag
     html_string = html_string[:5] + css + html_string[4:]
-
     return html_string
 
 
@@ -69,19 +68,14 @@ def generate_css_body_properties(background_image):
 
     if random_number == 2:
         css_string = css_string + "\nfont-family: " + font_family + ";"
-
     elif random_number == 0:
         font_family = font_matrix.fonts[0][0]
         font_source = font_matrix.fonts[0][1]
         font_face_css = font_face_css + font_family + "'; src: url('" + font_source + "');"
-
         css_string = css_string + font_face_css
-
     else:
         font_family = str(font_matrix.fonts[random_number][0])
         font_source = str(font_matrix.fonts[random_number][1])
         font_face_css = font_face_css + font_family + "'; src: url('" + font_source + "');"
-
         css_string = css_string + font_face_css
-
     return css_string + "\n}"
