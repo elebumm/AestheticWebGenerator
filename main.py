@@ -6,7 +6,7 @@ def build_web_page():
     page_title = generate.generate_title()
     page_css = generate.generate_page_css()
     static_assets_html = ""
-    random_number_assets = randint(7,50)
+    random_number_assets = randint(7,15)
     counter = 0
 
     while counter < random_number_assets:
