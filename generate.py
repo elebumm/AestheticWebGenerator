@@ -30,7 +30,8 @@ def generate_static_assets():
 def generate_css_image_properties():
     random_z_index = random.randint(0,5)
     random_number = random.randint(0,7)
-    css_string = "style= 'max-width: 500px; position: absolute; z-index: " + str(random_z_index) + ";"
+    max_width = random.randint(100,500)
+    css_string = "style= 'max-width: " + str(max_width) + "px; position: absolute; z-index: " + str(random_z_index) + ";"
     if random_number > 1 and random_number < 5:
         left = random.randint(0, 100)
         css_string = css_string + " left: " + str(left) + "%;"
@@ -89,7 +90,7 @@ def generate_css_body_properties(background_image):
 
 
 def generate_css_div_properties():
-    div_css = "#centerContainer {\nwidth: 900px; text-align: left; margin: 0 auto;}"
+    div_css = "#centerContainer {\nwidth: 900px; \ntext-align: left; \nmargin: 0 auto;}"
     return div_css
 
 
