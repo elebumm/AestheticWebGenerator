@@ -72,10 +72,10 @@ def generate_css_body_properties(background_image):
         font_family = font_matrix.fonts[0][0]
         font_source = font_matrix.fonts[0][1]
         font_face_css = font_face_css + font_family + "'; src: url('" + font_source + "');"
-        css_string = css_string + font_face_css
+        css_string += font_face_css
     else:
         font_family = str(font_matrix.fonts[random_number][0])
         font_source = str(font_matrix.fonts[random_number][1])
         font_face_css = font_face_css + font_family + "'; src: url('" + font_source + "');"
-        css_string = css_string + font_face_css
+        css_string += font_face_css
     return css_string + "\n}"
