@@ -5,6 +5,6 @@
 Created by:
 
 - [Lewis Menelaws](https://github.com/elebumm)
-- [Jasmyn Newton](https://github.com/10gica1)
+- [Jasmyn Newton](https://github.com/1ogica1)
 
 Last Updated: 08/23/2016

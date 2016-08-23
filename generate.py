@@ -33,16 +33,16 @@ def generate_css_image_properties():
     max_width = random.randint(100,500)
     css_string = "style= 'max-width: " + str(max_width) + "px; position: absolute; z-index: " + str(random_z_index) + ";"
     if random_number > 1 and random_number < 5:
-        left = random.randint(0, 100)
+        left = random.randint(0, 75)
         css_string = css_string + " left: " + str(left) + "%;"
     if random_number >= 3:
-        right = random.randint(0,100)
+        right = random.randint(0,75)
         css_string = css_string + " right: " + str(right) + "%;"
-    if random_number <= 2:
-        top = random.randint(0,100)
+    if random_number < 2:
+        top = random.randint(0,95)
         css_string = css_string + " top: " + str(top) + "%;"
     if random_number % 2 == 0:
-        bottom = random.randint(0, 100)
+        bottom = random.randint(0, 95)
         css_string = css_string + " bottom: " + str(bottom) + "%;"
     return css_string + "'"
 
