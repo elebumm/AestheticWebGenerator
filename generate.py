@@ -2,7 +2,9 @@ import seapunknames
 import content_array
 import font_matrix
 import random
+from faker import Faker
 
+fake = Faker()
 
 # grabs a random element from seapunknames.py arrays: 1, 2 and 3 and creates a <title> tag
 def generate_title():
@@ -95,3 +97,13 @@ def generate_page_css():
     open_css = "<style type='text/css'>\n"
     close_css = "\n</style>"
     return open_css + generate_css_body_properties(generate_background()) + "\n} \n" + generate_css_div_properties() + close_css
+
+
+def generate_paragraphs():
+    random_sentence = ""
+    for sentence in range(0, 6):
+        random_sentence += fake.text()
+    return random_sentence
+
+
+
