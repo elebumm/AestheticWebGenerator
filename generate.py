@@ -28,19 +28,19 @@ def generate_static_assets():
 def generate_css_image_properties():
     random_z_index = random.randint(0,5)
     random_number = random.randint(0,7)
-    css_string = "style='z-index: " + str(random_z_index) + ";"
+    css_string = "style= 'max-width: 500px; position: absolute; z-index: " + str(random_z_index) + ";"
     if random_number > 1 and random_number < 5:
-        left = random.randint(0, 3000)
-        css_string = css_string + " left: " + str(left) + "px;"
+        left = random.randint(0, 100)
+        css_string = css_string + " left: " + str(left) + "%;"
     if random_number >= 3:
-        right = random.randint(0,4000)
-        css_string = css_string + " right: " + str(right) + "px;"
+        right = random.randint(0,100)
+        css_string = css_string + " right: " + str(right) + "%;"
     if random_number <= 2:
-        top = random.randint(0,4000)
-        css_string = css_string + " top: " + str(top) + "px;"
+        top = random.randint(0,100)
+        css_string = css_string + " top: " + str(top) + "%;"
     if random_number % 2 == 0:
-        bottom = random.randint(0, 3000)
-        css_string = css_string + " bottom: " + str(bottom) + "px;"
+        bottom = random.randint(0, 100)
+        css_string = css_string + " bottom: " + str(bottom) + "%;"
     return css_string + "'"
 
 
@@ -55,14 +55,19 @@ def generate_complete_image_tag(static_asset, css_string):
     return html_string
 
 
+# generate random asset using all functions
+def generate_asset():
+    return generate_complete_image_tag(generate_static_assets(), generate_css_image_properties())
+
+
 # generate css values for web page, takes background_image argument passed by generate_background()
 # and assigns random font from font_matrix
 def generate_css_body_properties(background_image):
     background = background_image
-    font_family = "Times New Roman, sans-serif"
+    font_family = "'Times New Roman', sans-serif"
     random_number = random.randint(0,2)
-    css_string = "body: {\n"
-    font_face_css = "\n@font-face { \nfont-family: '"
+    css_string = "body { \nwidth: 100%;\ntext-align: center;\n"
+    font_face_css = "}\n@font-face { \nfont-family: '"
 
     css_string = css_string + background + ";"
 
@@ -71,11 +76,22 @@ def generate_css_body_properties(background_image):
     elif random_number == 0:
         font_family = font_matrix.fonts[0][0]
         font_source = font_matrix.fonts[0][1]
-        font_face_css = font_face_css + font_family + "'; src: url('" + font_source + "');"
+        font_face_css = font_face_css + font_family + "; src: url('" + font_source + "');"
         css_string += font_face_css
     else:
         font_family = str(font_matrix.fonts[random_number][0])
         font_source = str(font_matrix.fonts[random_number][1])
         font_face_css = font_face_css + font_family + "'; src: url('" + font_source + "');"
         css_string += font_face_css
-    return css_string + "\n}"
+    return css_string
+
+
+def generate_css_div_properties():
+    div_css = "#centerContainer {\nwidth: 900px; text-align: left; margin: 0 auto;}"
+    return div_css
+
+
+def generate_page_css():
+    open_css = "<style type='text/css'>\n"
+    close_css = "\n</style>"
+    return open_css + generate_css_body_properties(generate_background()) + "\n} \n" + generate_css_div_properties() + close_css
