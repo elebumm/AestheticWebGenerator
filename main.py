@@ -2,6 +2,7 @@ import generate
 from random import randint
 
 
+# main function that calls all functions in generate.py and returns an html string
 def build_web_page():
     page_title = generate.gen_title()
     page_css = generate.gen_page_css()
@@ -22,13 +23,14 @@ def build_web_page():
     body = "<body>\n<div id='centerContainer'>\n" + static_assets_html + "\n</div>\n</body>"
 
     # placeholder for generating random body text
-
     return html_open + head + body + html_close
 
 
+# creates file called index.html and inserts returned value from build_web_page()
 def write_to_file():
     file_name = "index.html"
     file = open(file_name, 'w')
     file.write(build_web_page())
 
+# main loop
 write_to_file()
