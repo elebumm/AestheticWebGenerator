@@ -6,8 +6,9 @@ from faker import Faker
 
 fake = Faker()
 
+
 # grabs a random element from seapunknames.py arrays: 1, 2 and 3 and creates a <title> tag
-def generate_title():
+def gen_title():
     random_title_1 = random.choice(seapunknames.firstArray)
     random_title_2 = random.choice(seapunknames.secondArray)
     random_title_3 = random.choice(seapunknames.thirdArray)
@@ -15,31 +16,30 @@ def generate_title():
 
 
 # grabs a random element from seapunknames.py array: 4 and creates a background-image: css property
-def generate_background():
+def gen_background():
     random_background = random.choice(seapunknames.fourthArray)
     return "background-image: url('" + random_background + "')"
 
 
 # grabs random element from content_array.py array and returns <img> tag
-def generate_static_assets():
+def gen_static_assets():
     random_image = random.choice(content_array.images)
     return "<img src='" + random_image + "' />"
 
 
 # generate random css properties including: z-index, top, bottom, left right
-def generate_css_image_properties():
-    random_z_index = random.randint(0,5)
-    random_number = random.randint(0,7)
-    max_width = random.randint(100,500)
-    css_string = "style= 'max-width: " + str(max_width) + "px; position: absolute; z-index: " + str(random_z_index) + ";"
+def gen_css_image_properties():
+    random_z_index = random.randint(0, 5)
+    random_number = random.randint(0, 7)
+    css_string = "style='position: absolute; z-index: " + str(random_z_index) + ";"
     if random_number > 1 and random_number < 5:
         left = random.randint(0, 100)
         css_string = css_string + " left: " + str(left) + "%;"
     if random_number >= 3:
-        right = random.randint(0,100)
+        right = random.randint(0, 100)
         css_string = css_string + " right: " + str(right) + "%;"
     if random_number <= 2:
-        top = random.randint(0,100)
+        top = random.randint(0, 100)
         css_string = css_string + " top: " + str(top) + "%;"
     if random_number % 2 == 0:
         bottom = random.randint(0, 100)
@@ -47,9 +47,17 @@ def generate_css_image_properties():
     return css_string + "'"
 
 
+# generate max_width for images and return a css string
+def gen_max_width_for_images(css_string):
+    max_width = random.randint(100, 500)
+    max_width_css = "max-width: "
+    css_with_max_width = css_string[0:7] + max_width_css + str(max_width) + "px; "
+    return css_with_max_width + css_string[7:]
+
+
 # generate complete image tag for static asset by concatenating results from generate_static_assets()
 # and generate_css_image_properties()
-def generate_complete_image_tag(static_asset, css_string):
+def gen_complete_image_tag(static_asset, css_string):
     html_string = static_asset
     css = css_string
 
@@ -59,16 +67,16 @@ def generate_complete_image_tag(static_asset, css_string):
 
 
 # generate random asset using all functions
-def generate_asset():
-    return generate_complete_image_tag(generate_static_assets(), generate_css_image_properties())
+def gen_asset():
+    return gen_complete_image_tag(gen_static_assets(), gen_max_width_for_images(gen_css_image_properties()))
 
 
 # generate css values for web page, takes background_image argument passed by generate_background()
 # and assigns random font from font_matrix
-def generate_css_body_properties(background_image):
+def gen_css_body_properties(background_image):
     background = background_image
     font_family = "'Times New Roman', sans-serif"
-    random_number = random.randint(0,2)
+    random_number = random.randint(0, 2)
     css_string = "body { \nwidth: 100%;\ntext-align: center;\n"
     font_face_css = "}\n@font-face { \nfont-family: '"
 
@@ -89,22 +97,22 @@ def generate_css_body_properties(background_image):
     return css_string
 
 
-def generate_css_div_properties():
+# generate a css property and return it in a div
+def gen_css_div_properties():
     div_css = "#centerContainer {\nwidth: 900px; \ntext-align: left; \nmargin: 0 auto;}"
     return div_css
 
 
-def generate_page_css():
+# enclose the css string in <style> tags
+def gen_page_css():
     open_css = "<style type='text/css'>\n"
     close_css = "\n</style>"
-    return open_css + generate_css_body_properties(generate_background()) + "\n} \n" + generate_css_div_properties() + close_css
+    return open_css + gen_css_body_properties(gen_background()) + "\n} \n" + gen_css_div_properties() + close_css
 
 
-def generate_paragraphs():
+# generate paragraphs using the faker library and enclose in <p> tags
+def gen_paragraphs():
     random_sentence = ""
     for sentence in range(0, 6):
         random_sentence += fake.text()
-    return random_sentence
-
-
-
+    return '<p>' + random_sentence + '</p>'

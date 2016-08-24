@@ -3,15 +3,18 @@ from random import randint
 
 
 def build_web_page():
-    page_title = generate.generate_title()
-    page_css = generate.generate_page_css()
+    page_title = generate.gen_title()
+    page_css = generate.gen_page_css()
     static_assets_html = ""
     random_number_assets = randint(7,50)
     counter = 0
 
     while counter < random_number_assets:
-        static_assets_html = static_assets_html + generate.generate_asset() + "\n"
+        static_assets_html = static_assets_html + generate.gen_asset() + "\n"
         counter += 1
+
+    counter_2 = 0
+    random_number_assets_2 = randint(1, 7)
 
     html_open = "<!DOCTYPE html>\n<html>\n"
     html_close = "\n</html>"
