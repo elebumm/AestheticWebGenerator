@@ -121,7 +121,13 @@ def gen_paragraphs():
 
     color_list = ['red', 'blue', 'green']
     gen_color = random.choice(color_list)
+    color_css = " color:" + gen_color + ";"
+
     casing_list = ['capitalize', "uppercase", 'lowercase']
     casing = random.choice(casing_list)
+    casing_css = "text-transform:" + casing + ";"
 
-    return "<div " + gen_css_image_properties()[:-1] + " color:" + gen_color + "; text-transform:" + casing + ";" + "'> \n" + random_sentence + "</div>"
+    max_width = random.choice(['10', '20', '30'])
+    max_width_css = "max-width: " + max_width + "%;"
+
+    return "<div " + gen_css_image_properties()[:-1] + color_css + casing_css + max_width_css + "'> \n" + random_sentence + "</div>"
