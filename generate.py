@@ -34,24 +34,25 @@ def gen_css_image_properties():
     random_z_index = random.randint(0, 5)
     random_number = random.randint(0, 7)
     css_string = "style='position: absolute; z-index: " + str(random_z_index) + ";"
-    if 1 < random_number < 5:
-        left = random.randint(0, 75)
-        css_string = css_string + " left: " + str(left) + "%;"
-    if random_number >= 3:
-        right = random.randint(0, 75)
-        css_string = css_string + " right: " + str(right) + "%;"
-    if random_number < 2:
-        top = random.randint(0, 95)
-        css_string = css_string + " top: " + str(top) + "%;"
-    if random_number % 2 == 0:
-        bottom = random.randint(0, 95)
-        css_string = css_string + " bottom: " + str(bottom) + "%;"
+
+    left = random.randint(0, 75)
+    css_string = css_string + " left: " + str(left) + "%;"
+
+    right = random.randint(0, 10)
+    css_string = css_string + " right: " + str(right) + "%;"
+
+    top = random.randint(0, 95)
+    css_string = css_string + " top: " + str(top) + "%;"
+
+    bottom = random.randint(0, 95)
+    css_string = css_string + " bottom: " + str(bottom) + "%;"
+
     return css_string + "'"
 
 
 # takes input from gen_css_image_properties() and returns css properties with added max width
 def gen_max_width_for_images(css_string):
-    max_width = random.randint(100, 500)
+    max_width = random.randint(200, 500)
     max_width_css = "max-width: "
     css_with_max_width = css_string[0:7] + max_width_css + str(max_width) + "px; "
     return css_with_max_width + css_string[7:]
@@ -119,15 +120,18 @@ def gen_paragraphs():
     for sentence in range(0,2):
         random_sentence += fake.text()
 
-    color_list = ['red', 'blue', 'green']
-    gen_color = random.choice(color_list)
+    gen_color = random.choice(['red', 'blue', 'green'])
     color_css = " color:" + gen_color + ";"
 
-    casing_list = ['capitalize', "uppercase", 'lowercase']
-    casing = random.choice(casing_list)
+    casing = random.choice(['capitalize', "uppercase", 'lowercase'])
     casing_css = "text-transform:" + casing + ";"
 
     max_width = random.choice(['10', '20', '30'])
     max_width_css = "max-width: " + max_width + "%;"
 
-    return "<div " + gen_css_image_properties()[:-1] + color_css + casing_css + max_width_css + "'> \n" + random_sentence + "</div>"
+    font_size_choice = random.choice(['1em', '1.5em', '2em', '3em'])
+    font_size = "font-size: "  + font_size_choice + ";"
+
+    background = random.choice(["background-color: white; ", " "])
+
+    return "<div " + gen_css_image_properties()[:-1] + background + font_size + color_css + casing_css + max_width_css + "'> \n" + random_sentence + "</div>"
