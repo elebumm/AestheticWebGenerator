@@ -15,7 +15,11 @@ def build_web_page():
         counter += 1
 
     counter_2 = 0
-    random_number_assets_2 = randint(1, 7)
+    random_number_assets_2 = randint(4, 7)
+
+    while counter_2 < random_number_assets_2:
+        static_assets_html = static_assets_html + generate.gen_paragraphs() + "\n"
+        counter_2 +=1
 
     html_open = "<!DOCTYPE html>\n<html>\n"
     html_close = "\n</html>"
