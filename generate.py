@@ -8,12 +8,12 @@ from faker import Faker
 fake = Faker()
 
 
-# grabs a random element from seapunknames.py arrays: 1, 2 and 3 and returns a <title> tag
+# grabs a random element from seapunknames.py arrays: 1, 2 and 3 and returns the string
 def gen_title():
     random_title_1 = random.choice(seapunknames.firstArray)
     random_title_2 = random.choice(seapunknames.secondArray)
     random_title_3 = random.choice(seapunknames.thirdArray)
-    return "<title>" + random_title_3 + random_title_1 + random_title_2 + random_title_3 + "</title>"
+    return random_title_3 + random_title_1 + random_title_2 + random_title_3
 
 
 # grabs a random element from seapunknames.py array-4 and returns a background-image: css property
