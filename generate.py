@@ -19,7 +19,7 @@ def gen_title():
 # grabs a random element from seapunknames.py array-4 and returns a background-image: css property
 def gen_background():
     random_background = random.choice(seapunknames.fourthArray)
-    return "background-image: url('" + random_background + "')"
+    return "background-image: url('" + random_background + "'); background-size: cover; "
 
 
 # grabs random element from content_array.py array and returns <img> tag
