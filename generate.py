@@ -113,9 +113,15 @@ def gen_page_css():
     return open_css + gen_css_body_properties(gen_background()) + "\n} \n" + gen_css_div_properties() + close_css
 
 
-# generate paragraphs using the faker library and enclose in <p> tags
 def gen_paragraphs():
     random_sentence = ""
-    for sentence in range(0, 6):
+
+    for sentence in range(0,2):
         random_sentence += fake.text()
-    return '<p>' + random_sentence + '</p>'
+
+    color_list = ['red', 'blue', 'green']
+    gen_color = random.choice(color_list)
+    casing_list = ['capitalize', "uppercase", 'lowercase']
+    casing = random.choice(casing_list)
+
+    return "<div " + gen_css_image_properties()[:-1] + " color:" + gen_color + "; text-transform:" + casing + ";" + "'> \n" + random_sentence + "</div>"
