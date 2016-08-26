@@ -1,11 +1,14 @@
 import seapunknames
-import content_array
 import font_matrix
 import random
 from faker import Faker
+import api
 
 # initiated Faker() class
 fake = Faker()
+
+# Grab a random link for the gen_static_assets() function
+link = api.get_random_query()
 
 
 # grabs a random element from seapunknames.py arrays: 1, 2 and 3 and returns the string
@@ -24,7 +27,7 @@ def gen_background():
 
 # grabs random element from content_array.py array and returns <img> tag
 def gen_static_assets():
-    random_image = random.choice(content_array.images)
+    random_image = api.get_image_link(link)
     return "<img src='" + random_image + "' />"
 
 
