@@ -3,6 +3,7 @@ import settings
 import random
 import json
 
+
 word_site = "http://svnweb.freebsd.org/csrg/share/dict/words?view=co&content-type=text/plain"
 api_key = settings.giphy_api
 url = "http://api.giphy.com/v1/gifs/search?q="
@@ -23,9 +24,13 @@ def get_random_query():
 def get_image_link(link):
     r = requests.get(link)
     api_response = json.loads(r.text)
-    data = api_response['data'][0]['images']['original']['url']
-    # data = api_response['data'][0]
-    return data
+    response = api_response['data']
+    if not response:
+        print('GIPHY API returned no results... finding another word...')
+        get_image_link(get_random_query())
+    else:
+        return response[random.randint(0,24)]['images']['original']['url']
+
 
 get_image_link(get_random_query())
 
