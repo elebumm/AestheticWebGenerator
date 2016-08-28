@@ -1,5 +1,6 @@
 import generate
 from random import randint
+import api
 
 
 # main function that calls all functions in generate.py and returns an html string
@@ -41,4 +42,12 @@ def write_to_file():
     file.write(build_web_page())
 
 # main loop
-write_to_file()
+while not api.flag:
+    try:
+        write_to_file()
+        break
+    except TypeError:
+        api.flag = False
+        print('there was a type error')
+        pass
+
