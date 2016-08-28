@@ -35,7 +35,6 @@ def gen_static_assets():
 # uses randint to generate results.
 def gen_css_image_properties():
     random_z_index = random.randint(0, 5)
-    random_number = random.randint(0, 7)
     css_string = "style='position: absolute; z-index: " + str(random_z_index) + ";"
 
     left = random.randint(0, 75)
@@ -120,7 +119,7 @@ def gen_page_css():
 def gen_paragraphs():
     random_sentence = ""
 
-    for sentence in range(0,2):
+    for sentence in range(0, 2):
         random_sentence += fake.text()
 
     gen_color = random.choice(['red', 'blue', 'green'])
@@ -133,8 +132,9 @@ def gen_paragraphs():
     max_width_css = "max-width: " + max_width + "%;"
 
     font_size_choice = random.choice(['1em', '1.5em', '2em', '3em'])
-    font_size = "font-size: "  + font_size_choice + ";"
+    font_size = "font-size: " + font_size_choice + ";"
 
     background = random.choice(["background-color: white; ", " "])
 
-    return "<div " + gen_css_image_properties()[:-1] + background + font_size + color_css + casing_css + max_width_css + "'> \n" + random_sentence + "</div>"
+    return "<div " + gen_css_image_properties()[:-1] + background + font_size + color_css + casing_css +  \
+           max_width_css + "'> \n" + random_sentence + "</div>"

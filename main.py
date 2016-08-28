@@ -9,7 +9,7 @@ def build_web_page():
     header_title = page_title
     page_css = generate.gen_page_css()
     static_assets_html = ""
-    random_number_assets = randint(7,15)
+    random_number_assets = randint(7, 15)
     counter = 0
 
     while counter < random_number_assets:
@@ -21,7 +21,7 @@ def build_web_page():
 
     while counter_2 < random_number_assets_2:
         static_assets_html = static_assets_html + generate.gen_paragraphs() + "\n"
-        counter_2 +=1
+        counter_2 += 1
 
     header_title_html = "<h1 style='z-index: 300; position: relative; background: #fff;'>" + header_title + "</h1>"
 

@@ -29,8 +29,7 @@ def get_image_link(link):
         print('GIPHY API returned no results... finding another word...')
         get_image_link(get_random_query())
     else:
-        return response[random.randint(0,24)]['images']['original']['url']
+        return response[random.randint(0, 24)]['images']['original']['url']
 
 
 get_image_link(get_random_query())
-

@@ -3,3 +3,4 @@ settings.py
 __pycache__/
 index.html
 venv
+.DS_Store
