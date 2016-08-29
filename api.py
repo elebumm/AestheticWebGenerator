@@ -18,7 +18,6 @@ def get_random_query():
     words = r.content.splitlines()
     random_word = random.choice(words).decode('utf-8')
     random_query = url + "&api_key=" + api_key
-    print(random_word)
     return random_query
 
 
