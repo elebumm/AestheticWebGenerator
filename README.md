@@ -8,8 +8,6 @@ Created and Maintained by:
 - [Jasmyn Newton](https://github.com/1ogica1)
 - [Jason Nguyen](https://github.com/jasonmasterrace)
 
-Last Updated: 08/26/2016
-
 ### Requirements
 
 - Python 3+
