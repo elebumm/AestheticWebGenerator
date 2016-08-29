@@ -49,5 +49,10 @@ def write_to_file():
     file.write(build_web_page())
 
 # main loop
-write_to_file()
+while not api.flag:
+    try:
+        write_to_file()
+    except TypeError:
+        generate.link = api.get_random_query()
+        pass
 
