@@ -55,4 +55,3 @@ while not api.flag:
     except TypeError:
         generate.link = api.get_random_query()
         pass
-

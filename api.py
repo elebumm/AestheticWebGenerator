@@ -33,5 +33,3 @@ def get_image_link(link):
     elif response:
         flag = True
         return response['image_original_url']
-
-
