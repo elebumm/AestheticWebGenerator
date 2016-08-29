@@ -1,12 +1,15 @@
 import generate
 from random import randint
 import api
+import time
 
 
 # main function that calls all functions in generate.py and returns an html string
 def build_web_page():
+    print('Generating title, header and css')
+    time.sleep(3)
     page_title = generate.gen_title()
-    page_title_html = "<title>" + generate.gen_title() + "</title>"
+    page_title_html = "<title>" + page_title + "</title>"
     header_title = page_title
     page_css = generate.gen_page_css()
     static_assets_html = ""
@@ -14,6 +17,7 @@ def build_web_page():
     counter = 0
 
     while counter < random_number_assets:
+        print('Number of assets generated: ' + str(counter + 1))
         static_assets_html = static_assets_html + generate.gen_asset() + "\n"
         counter += 1
 
@@ -21,6 +25,7 @@ def build_web_page():
     random_number_assets_2 = randint(4, 7)
 
     while counter_2 < random_number_assets_2:
+        print('Number of paragraphs generated: ' + str(counter_2 + 1))
         static_assets_html = static_assets_html + generate.gen_paragraphs() + "\n"
         counter_2 += 1
 
@@ -32,6 +37,8 @@ def build_web_page():
     body = "<body>\n" + header_title_html + "\n<div id='centerContainer'>\n" + static_assets_html + "\n</div>\n</body>"
 
     # placeholder for generating random body text
+    print('Website Generated... Time to Cringe :)')
+    time.sleep(3)
     return html_open + head + body + html_close
 
 
@@ -42,12 +49,5 @@ def write_to_file():
     file.write(build_web_page())
 
 # main loop
-while not api.flag:
-    try:
-        write_to_file()
-        break
-    except TypeError:
-        api.flag = False
-        print('there was a type error')
-        pass
+write_to_file()
 
