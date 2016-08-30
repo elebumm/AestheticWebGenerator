@@ -10,7 +10,7 @@ def build_web_page():
     time.sleep(3)
     page_title = generate.gen_title()
     page_title_html = "<title>" + page_title + "</title>"
-    header_title = page_title
+    header_title = generate.random_url_header()
     page_css = generate.gen_page_css()
     static_assets_html = ""
     random_number_assets = randint(7, 15)
@@ -48,7 +48,8 @@ def write_to_file():
     file = open(file_name, 'w')
     file.write(build_web_page())
 
-# main loop
+# while loop that will continue to run unless it runs into a TypeError
+# (an error that occurs when there are no gif results for the random word generated)
 while not api.flag:
     try:
         write_to_file()

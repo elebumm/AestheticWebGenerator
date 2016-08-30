@@ -19,6 +19,23 @@ def gen_title():
     return random_title_3 + random_title_1 + random_title_2 + random_title_3
 
 
+def random_url_header():
+    global link
+    sentence_starters = ['ilove', 'thebest', 'iam', 'happiest', 'thesaddest', 'coolest', 'sexy',
+                         'rich', 'corny', 'safe', 'sensitive', 'fast', 'slippery', 'hungry',
+                         'thirsty', 'queer', 'angelic']
+    random_starter = random.choice(sentence_starters)
+    character_selection = ['boy', 'girl', 'dude', 'gal', 'chick', 'bitch', 'bae', 'dog', 'kitten',
+                           'asian']
+    end_number = random.randint(0, 99)
+    rand_num = random.randint(0, 10)
+    if rand_num > 4:
+        gender = random.choice(character_selection)
+    else:
+        gender = ''
+    return random_starter + link[63:] + gender + str(end_number)
+
+
 # grabs a random element from seapunknames.py array-4 and returns a background-image: css property
 def gen_background():
     random_background = random.choice(seapunknames.fourthArray)
