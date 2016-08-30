@@ -19,6 +19,9 @@ def gen_title():
     return random_title_3 + random_title_1 + random_title_2 + random_title_3
 
 
+# Creates a random username and displays on the header of the website
+# Note: link[63:] is a current workaround depending on what api key you are using and
+# may need to be changed.
 def random_url_header():
     global link
     sentence_starters = ['ilove', 'thebest', 'iam', 'happiest', 'thesaddest', 'coolest', 'sexy',
