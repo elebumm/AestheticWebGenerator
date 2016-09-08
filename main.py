@@ -22,7 +22,7 @@ def build_web_page():
         counter += 1
 
     counter_2 = 0
-    random_number_assets_2 = randint(4, 7)
+    random_number_assets_2 = randint(2, 5)
 
     while counter_2 < random_number_assets_2:
         print('Number of paragraphs generated: ' + str(counter_2 + 1))
@@ -54,5 +54,5 @@ while not api.flag:
     try:
         write_to_file()
     except TypeError:
-        generate.link = api.get_random_query()
+        generate.link = api.get_random_query()[0]
         pass

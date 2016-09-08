@@ -1,14 +1,13 @@
 import seapunknames
 import font_matrix
 import random
-from faker import Faker
 import api
 
-# initiated Faker() class
-fake = Faker()
-
-# Grab a random link for the gen_static_assets() function
+# link  - Grab a random link for the gen_static_assets() function
+# tweet - Using link variable, grab a set of tweets to grab from.
 link = api.get_random_query()
+
+tweets = api.get_tweet(link[1])
 
 
 # grabs a random element from seapunknames.py arrays: 1, 2 and 3 and returns the string
@@ -36,7 +35,7 @@ def random_url_header():
         gender = random.choice(character_selection)
     else:
         gender = ''
-    return random_starter + link[63:] + gender + str(end_number)
+    return random_starter + link[0][63:] + gender + str(end_number)
 
 
 # grabs a random element from seapunknames.py array-4 and returns a background-image: css property
@@ -47,7 +46,7 @@ def gen_background():
 
 # grabs random element from content_array.py array and returns <img> tag
 def gen_static_assets():
-    random_image = api.get_image_link(link)
+    random_image = api.get_image_link(link[0])
     return "<img src='" + random_image + "' />"
 
 
@@ -137,10 +136,7 @@ def gen_page_css():
 
 
 def gen_paragraphs():
-    random_sentence = ""
-
-    for sentence in range(0, 2):
-        random_sentence += fake.text()
+    random_tweet = random.choice(tweets)
 
     gen_color = random.choice(['red', 'blue', 'green'])
     color_css = " color:" + gen_color + ";"
@@ -157,4 +153,4 @@ def gen_paragraphs():
     background = random.choice(["background-color: white; ", " "])
 
     return "<div " + gen_css_image_properties()[:-1] + background + font_size + color_css + casing_css +  \
-           max_width_css + "'> \n" + random_sentence + "</div>"
+           max_width_css + "'> \n" + random_tweet + "</div>"
