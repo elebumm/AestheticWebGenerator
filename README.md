@@ -18,7 +18,7 @@ Created and Maintained by:
 
 1. download zip or clone repo
 2. run `pip install -r requirements.txt`
-3. go in settings.py and put in GIPHY API key. The default one has been given, just paste it in.
+3. go in settings.py and put in the GIPHY API key and the twitter ones. The default GIPHY key has been given.
 4. run main.py file (python3 or py)
 5. open index.html in your favorite browser (internet explorer 6)
 6. google pictures of cute kittens to unsee what you have seen.
